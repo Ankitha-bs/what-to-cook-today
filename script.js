@@ -121,9 +121,36 @@ function showDishes(dishList) {
   });
 }
 
-// =========================================================
-// 4. Initial Page Load: Show All 12 Dishes
-// (Search, dropdowns, Surprise me, and heart buttons are
-//  intentionally left without event listeners for you to add!)
-// =========================================================
+ 
 showDishes(dishes);
+const searchBox = document.querySelector("input");
+const selects = document.querySelectorAll("select");
+const mealSelect = selects[0];
+const dietSelect = selects[1];
+
+let currentList = dishes;
+function applyFilters() {
+  const text = searchBox.value.toLowerCase();
+  const meal = mealSelect.value.toLowerCase();
+  const diet = dietSelect.value.toLowerCase();
+
+  const result = dishes.filter(function (dish) {
+    const nameOk = dish.name.toLowerCase().includes(text);
+    const mealOk = meal === "all" || dish.meal.toLowerCase() === meal;
+    const dietOk = diet === "all" || dish.type.toLowerCase() === diet;
+    return nameOk && mealOk && dietOk;
+  });
+currentList = result;
+  showDishes(result);
+}
+
+searchBox.addEventListener("input", applyFilters);
+mealSelect.addEventListener("change", applyFilters);
+dietSelect.addEventListener("change", applyFilters);
+const surpriseBtn = document.querySelector("button");
+surpriseBtn.addEventListener("click", function () {
+  if (currentList.length === 0) return;
+  const randomIndex = Math.floor(Math.random() * currentList.length);
+  const randomDish = currentList[randomIndex];
+  showDishes([randomDish]);
+});
