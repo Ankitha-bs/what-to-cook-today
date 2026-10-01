@@ -1,0 +1,304 @@
+/* =========================================================
+   1. Base Reset & Page Variables
+   ========================================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #faf7f2; /* Warm linen background */
+  color: #2c221e;            /* Deep espresso text */
+  line-height: 1.5;
+  padding-bottom: 3rem;
+}
+
+/* Centered page container with max width */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* =========================================================
+   2. Header Styles (Title & One-Line Tagline)
+   ========================================================= */
+.site-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8e2d9;
+  padding: 2.25rem 0 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.site-title {
+  font-family: "Lora", Georgia, serif;
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: #231915;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.site-tagline {
+  font-size: 1rem;
+  color: #6e6259;
+}
+
+/* =========================================================
+   3. Controls Bar (Search, Dropdowns, Surprise Button)
+   ========================================================= */
+.controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #e8e2d9;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Search box takes up remaining horizontal space on desktop */
+.search-group {
+  flex: 2;
+  min-width: 220px;
+}
+
+.control-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #5c5048;
+}
+
+.search-input,
+.filter-select {
+  height: 44px;
+  padding: 0 0.85rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #2c221e;
+  background-color: #faf7f2;
+  border: 1px solid #dcd4c8;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.filter-select {
+  min-width: 150px;
+  cursor: pointer;
+}
+
+.search-input:focus,
+.filter-select:focus {
+  border-color: #c85a32;
+  background-color: #ffffff;
+}
+
+/* "Surprise me" primary action button */
+.surprise-btn {
+  height: 44px;
+  padding: 0 1.35rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #c85a32; /* Warm terracotta spice accent */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.surprise-btn:hover {
+  background-color: #b04b25;
+}
+
+.surprise-btn:active {
+  transform: translateY(1px);
+}
+
+/* =========================================================
+   4. Dish Grid & Dish Card Styles
+   ========================================================= */
+.dish-grid {
+  display: grid;
+  /* 3 columns on desktop, adjusts automatically for smaller screens */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.dish-card {
+  background-color: #ffffff;
+  border: 1px solid #e8e2d9;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.dish-card:hover {
+  transform: translateY(-2px);
+  border-color: #d5cab8;
+}
+
+/* Top row of the card: Dish Name + Heart Button */
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.dish-name {
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #231915;
+}
+
+/* Heart button for saving favorite dishes */
+.heart-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #e8e2d9;
+  background-color: #faf7f2;
+  color: #6e6259;
+  font-size: 1.1rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.heart-btn:hover {
+  color: #c85a32;
+  border-color: #c85a32;
+  background-color: #fff5f0;
+}
+
+/* Bottom row of the card: Meal Type, Cooking Time, and Veg/Non-veg Tag */
+.card-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f2ede6;
+  font-size: 0.875rem;
+  color: #6e6259;
+}
+
+.dish-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.meta-separator {
+  color: #c5b9ac;
+}
+
+.cooking-time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Veg / Non-veg Tag with Indian standard dot indicator */
+.diet-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.diet-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Green for Veg */
+.diet-veg {
+  color: #266837;
+}
+
+.diet-veg .diet-dot {
+  background-color: #266837;
+}
+
+/* Red/Brown for Non-veg */
+.diet-non-veg {
+  color: #b5382a;
+}
+
+.diet-non-veg .diet-dot {
+  background-color: #b5382a;
+}
+
+/* =========================================================
+   5. Responsive Design for Tablets and Phones
+   ========================================================= */
+
+/* Tablet screens: 2 columns */
+@media (max-width: 900px) {
+  .dish-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Phone screens: 1 column and stacked full-width controls */
+@media (max-width: 600px) {
+  .site-header {
+    padding: 1.5rem 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .site-title {
+    font-size: 1.75rem;
+  }
+
+  .site-tagline {
+    font-size: 0.92rem;
+  }
+
+  .controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    gap: 0.85rem;
+  }
+
+  .control-group,
+  .search-group,
+  .filter-select,
+  .surprise-btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dish-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

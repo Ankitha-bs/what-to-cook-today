@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What to Cook Today</title>
+  <meta name="description" content="A simple Indian home meal finder to help decide what to cook for breakfast, lunch, or dinner.">
+  <meta property="og:title" content="What to Cook Today">
+  <meta property="og:description" content="A simple Indian home meal finder to help decide what to cook for breakfast, lunch, or dinner.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts for warm, readable typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Link to external stylesheet (no leading slash) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header Section: Title and a single-line tagline (no menu, no sign-in) -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">What to Cook Today</h1>
+      <p class="site-tagline">Simple everyday Indian home dishes for breakfast, lunch, and dinner.</p>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="container">
+
+    <!-- Filter & Controls Section: Search, Meal Dropdown, Veg/Non-veg Dropdown, Surprise Me Button -->
+    <section class="controls-bar" aria-label="Dish filters">
+      
+      <!-- Search box -->
+      <div class="control-group search-group">
+        <label for="search-input" class="control-label">Search dish</label>
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Search pulao, dosa, sambar..."
+        >
+      </div>
+
+      <!-- Meal type dropdown (All, Breakfast, Lunch, Dinner) -->
+      <div class="control-group">
+        <label for="meal-select" class="control-label">Meal</label>
+        <select id="meal-select" class="filter-select">
+          <option value="All">All</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+        </select>
+      </div>
+
+      <!-- Veg / Non-veg dropdown (All, Veg, Non-veg) -->
+      <div class="control-group">
+        <label for="diet-select" class="control-label">Diet</label>
+        <select id="diet-select" class="filter-select">
+          <option value="All">All</option>
+          <option value="Veg">Veg</option>
+          <option value="Non-veg">Non-veg</option>
+        </select>
+      </div>
+
+      <!-- "Surprise me" button -->
+      <div class="control-group button-group">
+        <button type="button" id="surprise-btn" class="surprise-btn">
+          Surprise me
+        </button>
+      </div>
+
+    </section>
+
+    <!-- Dish Cards Grid: Populated dynamically by script.js -->
+    <section id="dish-grid" class="dish-grid" aria-label="Dish list">
+      <!-- JavaScript will insert the 12 dish cards here -->
+    </section>
+
+  </main>
+
+  <!-- Link to external JavaScript file (no leading slash) -->
+  <script src="script.js"></script>
+</body>
+</html>
