@@ -3,6 +3,7 @@
 A small website that helps decide what to cook. Search dishes, filter by meal and veg/non-veg, get a random pick, and save favorites.
 
 *Live demo:* https://ankitha-bs.github.io/what-to-cook-today/
+load image
 
 ## Problem
 Every day at home the question is "what should we cook today?" This site shows 12 home dishes and narrows the choice quickly.
