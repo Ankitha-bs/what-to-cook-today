@@ -84,9 +84,18 @@ const dishGrid = document.getElementById("dish-grid");
 // =========================================================
 // 3. Function to Render Dish Cards into the Grid
 // =========================================================
+
+
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 function showDishes(dishList) {
   // Clear any existing content inside the grid
   dishGrid.innerHTML = "";
+if (dishList.length === 0) {
+  dishGrid.innerHTML = "<p>No dish found. Try another name or filter.</p>";
+  return;
+}
+
 
   // Loop through each dish object and create a card
   dishList.forEach(function (dish) {
@@ -115,6 +124,27 @@ function showDishes(dishList) {
         </span>
       </div>
     `;
+const heartBtn = card.querySelector(".heart-btn");
+
+if (favorites.includes(dish.name)) {
+  heartBtn.textContent = "♥️";
+}
+
+heartBtn.addEventListener("click", function () {
+  if (favorites.includes(dish.name)) {
+    favorites = favorites.filter(function (name) {
+      return name !== dish.name;
+    });
+    heartBtn.textContent = "♡";
+  } else {
+    favorites.push(dish.name);
+    heartBtn.textContent = "♥️";
+  }
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+});
+
+
+
 
     // Add the finished card to the grid
     dishGrid.appendChild(card);
